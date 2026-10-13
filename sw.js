@@ -1,6 +1,6 @@
 /* Service worker: zapisuje wszystkie pliki aplikacji, żeby quiz działał offline.
    Po zmianie plików podbij numer wersji — stary cache zostanie usunięty. */
-var VERSION = 'v1';
+var VERSION = 'v2';
 var APP_CACHE = 'krolewski-quiz-' + VERSION;
 var FONT_CACHE = 'krolewski-quiz-fonts';
 

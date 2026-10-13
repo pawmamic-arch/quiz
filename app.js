@@ -17,7 +17,7 @@
   ];
 
   var PRAISE = ['Brawo, Wasza Wysokość!', 'Królewska odpowiedź!', 'Wiwat! Dokładnie tak.', 'Kronikarze to zapiszą!', 'Ależ erudycja!', 'Szlachta bije brawo!'];
-  var OOPS = ['Ojoj, nie tym razem!', 'Pudło, Miłościwy Panie!', 'Kronikarz litościwie przemilczy…', 'Nawet królom się zdarza.', 'Szlachta kręci wąsem…'];
+  var OOPS = ['Ojoj, nie tym razem!', 'Pudło, Miłościwa Pani!', 'Kronikarz litościwie przemilczy…', 'Nawet królom się zdarza (królowym nie).', 'Szlachta kręci wąsem…'];
 
   var reducedMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   function reducedMotion() { return !!(reducedMotionQuery && reducedMotionQuery.matches); }
