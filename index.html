@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kto jest najlepszym władcą w historii Polski?</title>
+  <meta name="description" content="Królewski quiz o polskich władcach. 12 pytań, ciekawostki i werdykt: do którego króla Ci najbliżej?">
+  <meta name="theme-color" content="#4a0b14">
+  <meta property="og:title" content="Kto jest najlepszym władcą w historii Polski?">
+  <meta property="og:description" content="Sprawdź, czy masz w sobie królewską krew. 12 pytań o polskich władcach.">
+  <meta property="og:type" content="website">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Królewski Quiz">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sprite z własnymi grafikami SVG (korona, ornamenty). Nie display:none, żeby gradienty działały. -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fbe9a6"/>
+        <stop offset=".45" stop-color="#e5bd4f"/>
+        <stop offset="1" stop-color="#a87a17"/>
+      </linearGradient>
+      <linearGradient id="g-gold-h" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#a87a17"/>
+        <stop offset=".5" stop-color="#f6dc8c"/>
+        <stop offset="1" stop-color="#a87a17"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-crown" viewBox="0 0 64 50">
+      <path d="M7 39 3.5 13.5 18.5 25 32 7l13.5 18L60.5 13.5 57 39Z" fill="url(#g-gold)" stroke="#7a5510" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 34.5h40" stroke="#fff3c4" stroke-opacity=".55" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="5.5" y="38.5" width="53" height="8" rx="2.2" fill="url(#g-gold)" stroke="#7a5510" stroke-width="1.6"/>
+      <circle cx="3.8" cy="11" r="3.4" fill="url(#g-gold)" stroke="#7a5510" stroke-width="1.3"/>
+      <circle cx="32" cy="5" r="3.8" fill="url(#g-gold)" stroke="#7a5510" stroke-width="1.3"/>
+      <circle cx="60.2" cy="11" r="3.4" fill="url(#g-gold)" stroke="#7a5510" stroke-width="1.3"/>
+      <path d="M32 21.5 36 27l-4 5.5-4-5.5Z" fill="#9b1c31" stroke="#5a0d18" stroke-width="1"/>
+      <circle cx="18" cy="42.5" r="2" fill="#9b1c31"/>
+      <circle cx="32" cy="42.5" r="2.3" fill="#1f5f8b"/>
+      <circle cx="46" cy="42.5" r="2" fill="#9b1c31"/>
+    </symbol>
+    <symbol id="i-corner" viewBox="0 0 44 44">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M3 41V16C3 8.8 8.8 3 16 3h25" stroke-width="2.2"/>
+        <path d="M8.5 41V19c0-5.8 4.7-10.5 10.5-10.5h22" stroke-width="1" opacity=".75"/>
+        <path d="M14 14c3-3.5 7.5-2.5 7.5 1.2 0 2.6-3.6 3.2-4.4 1.1" stroke-width="1.4"/>
+      </g>
+      <path d="m14 14 2.6 2.6L14 19.2l-2.6-2.6Z" fill="currentColor" transform="translate(-4 -4)"/>
+    </symbol>
+    <symbol id="i-divider" viewBox="0 0 220 20">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M4 10h76M140 10h76" stroke-width="1.4"/>
+        <path d="M84 10c6-7 12-7 16 0M120 10c4-7 10-7 16 0" stroke-width="1.4"/>
+      </g>
+      <path d="m110 2 7 8-7 8-7-8Z" fill="currentColor"/>
+      <circle cx="80" cy="10" r="2" fill="currentColor"/>
+      <circle cx="140" cy="10" r="2" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <div class="app">
+    <header class="brand">
+      <svg class="brand__crown" aria-hidden="true"><use href="#i-crown"/></svg>
+      <span class="brand__name">Królewski Quiz</span>
+    </header>
+
+    <main>
+      <!-- EKRAN STARTOWY -->
+      <section class="screen is-active" id="screen-start" aria-labelledby="start-title">
+        <div class="card card--hero">
+          <svg class="corner corner--tl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--tr" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--bl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--br" aria-hidden="true"><use href="#i-corner"/></svg>
+
+          <div class="hero-crown" aria-hidden="true">
+            <span class="hero-crown__glow"></span>
+            <svg><use href="#i-crown"/></svg>
+          </div>
+          <p class="eyebrow">Wielki sprawdzian koronny</p>
+          <h1 class="title" id="start-title" tabindex="-1">Kto jest najlepszym władcą w&nbsp;historii Polski?</h1>
+          <svg class="divider" aria-hidden="true"><use href="#i-divider"/></svg>
+          <p class="subtitle">Sprawdź, czy masz w&nbsp;sobie królewską krew.</p>
+          <ul class="perks" aria-label="Co Cię czeka">
+            <li><strong>12</strong> pytań</li>
+            <li><strong>16</strong> w puli</li>
+            <li><strong>1</strong> korona</li>
+          </ul>
+          <p class="best" id="best" hidden></p>
+          <button class="btn btn--gold btn--big" id="start-btn" type="button">
+            <span>Zaczynamy</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- EKRAN PYTAŃ -->
+      <section class="screen" id="screen-quiz" aria-label="Quiz">
+        <div class="quiz-top">
+          <div class="quiz-top__row">
+            <p class="counter">Pytanie <strong id="q-num">1</strong><span class="counter__sep">/</span><span id="q-total">12</span></p>
+            <p class="score-pill" aria-label="Zdobyte punkty">
+              <svg aria-hidden="true"><use href="#i-crown"/></svg>
+              <span id="score-now">0</span>
+            </p>
+          </div>
+          <div class="progress" id="progress" role="progressbar" aria-label="Postęp quizu" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0">
+            <div class="progress__track"><div class="progress__fill"></div></div>
+            <svg class="progress__crown" aria-hidden="true"><use href="#i-crown"/></svg>
+          </div>
+        </div>
+
+        <article class="card card--question" id="q-card">
+          <svg class="corner corner--tl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--tr" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--bl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--br" aria-hidden="true"><use href="#i-corner"/></svg>
+
+          <h2 class="question" id="q-text" tabindex="-1"></h2>
+          <div class="answers" id="answers" role="group" aria-labelledby="q-text"></div>
+
+          <div class="feedback" id="feedback" hidden>
+            <p class="verdict" id="verdict" role="status" aria-live="polite"></p>
+            <div class="fact">
+              <p class="fact__label">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v11a2 2 0 0 0 2 2H8a3 3 0 0 1-3-3V4Zm0 0a2 2 0 0 0-2 2v2h2M9 9h6M9 13h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Ciekawostka
+              </p>
+              <p class="fact__text" id="fact"></p>
+            </div>
+            <button class="btn btn--gold" id="next-btn" type="button"><span>Dalej</span></button>
+          </div>
+        </article>
+      </section>
+
+      <!-- EKRAN WYNIKU -->
+      <section class="screen" id="screen-result" aria-labelledby="result-title">
+        <div class="card card--result">
+          <svg class="corner corner--tl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--tr" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--bl" aria-hidden="true"><use href="#i-corner"/></svg>
+          <svg class="corner corner--br" aria-hidden="true"><use href="#i-corner"/></svg>
+
+          <p class="eyebrow">Werdykt kapituły</p>
+          <h2 class="result-lead" id="result-title" tabindex="-1">Najlepszym władcą w&nbsp;historii Polski jesteś…</h2>
+          <p class="result-you">TY!</p>
+
+          <div class="emblem" aria-hidden="true">
+            <span class="emblem__rays"></span>
+            <span class="emblem__medal">
+              <span class="emblem__symbol" id="result-symbol">👑</span>
+            </span>
+            <svg class="emblem__crown"><use href="#i-crown"/></svg>
+          </div>
+
+          <p class="result-like">A dokładnie — jesteś jak</p>
+          <h3 class="result-ruler" id="result-ruler"></h3>
+          <svg class="divider" aria-hidden="true"><use href="#i-divider"/></svg>
+          <p class="result-desc" id="result-desc"></p>
+
+          <p class="result-score">
+            <span class="result-score__label">Twój wynik</span>
+            <span class="result-score__value"><strong id="result-score">0</strong>/<span id="result-total">12</span></span>
+          </p>
+          <p class="record" id="record" hidden>Nowy rekord królestwa!</p>
+
+          <div class="actions">
+            <button class="btn btn--gold" id="again-btn" type="button"><span>Zagraj jeszcze raz</span></button>
+            <button class="btn btn--ghost" id="share-btn" type="button">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v6.5A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5V12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Udostępnij wynik</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
